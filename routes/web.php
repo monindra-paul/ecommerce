@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TempImagesController;
 
 
@@ -50,6 +51,14 @@ Route::group(['prefix'=>'admin'],function(){
         Route::put('/categories/{category}',[CategoryController::class, 'update'])->name('categories.update');
         Route::delete('/categories/{category}',[CategoryController::class, 'destroy'])->name('categories.delete');
 
+
+        // sub categories create
+        Route::get('/sub-categories/create',[SubCategoryController::class,'create'])->name('sub-categories.create');
+
+
+
+
+
         // Image Upload routes 
         Route::post('/upload-temp-image',[TempImagesController::class, 'create'])->name('temp-images.create');
 
@@ -66,8 +75,6 @@ Route::group(['prefix'=>'admin'],function(){
                 'slug'=> $slug
             ]);
         })->name('getSlug');
-
-
 
     });
 
